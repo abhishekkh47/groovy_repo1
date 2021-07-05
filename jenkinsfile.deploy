@@ -1,0 +1,25 @@
+pipeline
+{
+  agent any
+  stages{
+    stage('Deploy the container'){
+      steps{
+        sh '''
+sudo /bin/bash <<"EOT"
+a=$(sudo ls /home/dell/Deqode/jenkins_projects/web/ | grep html)
+if [ -n "$a" ]
+then
+if sudo docker ps | grep web_app
+then
+sudo docker rm -f web_app
+sudo docker run -dit -p 8081:80 -v /home/dell/Deqode/jenkins_projects/web:/usr/local/apache2/htdocs --name web_app httpd:latest
+else
+sudo docker run -dit -p 8081:80 -v /home/dell/Deqode/jenkins_projects/web:/usr/local/apache2/htdocs --name web_app httpd:latest
+fi
+fi
+EOT
+'''
+      }
+    }
+  }
+}
