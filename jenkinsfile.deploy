@@ -12,14 +12,17 @@ then
 if sudo docker ps | grep web_app
 then
 sudo docker rm -f web_app
-sudo docker run -dit -p 8081:80 -v /home/dell/Deqode/jenkins_projects/web:/usr/local/apache2/htdocs --name web_app httpd:latest
+sudo docker run -dit -p 8081:80 -v /home/dell/Deqode/jenkins_projects/web:/usr/local/apache2/htdocs --name web_app apache2
 else
-sudo docker run -dit -p 8081:80 -v /home/dell/Deqode/jenkins_projects/web:/usr/local/apache2/htdocs --name web_app httpd:latest
+sudo docker run -dit -p 8081:80 -v /home/dell/Deqode/jenkins_projects/web:/usr/local/apache2/htdocs --name web_app apache2
 fi
 fi
 EOT
 '''
       }
+    }
+    stage('Trigger deployment pipeline'){
+      build job: 'task1-seed2'
     }
   }
 }
