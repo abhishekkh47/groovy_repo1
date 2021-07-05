@@ -12,9 +12,9 @@ then
 if sudo docker ps | grep web_app
 then
 sudo docker rm -f web_app
-sudo docker run -dit -p 8081:80 -v /home/dell/Deqode/jenkins_projects/web:/usr/local/apache2/htdocs --name web_app apache2
+sudo docker run -dit -p 8081:80 -v /home/dell/Deqode/jenkins_projects/web:/usr/local/apache2/htdocs --name web_app abhishekkhandelwal/apache2
 else
-sudo docker run -dit -p 8081:80 -v /home/dell/Deqode/jenkins_projects/web:/usr/local/apache2/htdocs --name web_app apache2
+sudo docker run -dit -p 8081:80 -v /home/dell/Deqode/jenkins_projects/web:/usr/local/apache2/htdocs --name web_app abhishekkhandelwal/apache2
 fi
 fi
 EOT
