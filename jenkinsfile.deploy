@@ -21,10 +21,5 @@ EOT
 '''
       }
     }
-    stage('Trigger deployment pipeline'){
-      steps{
-        build job: 'task1-seed2'
-      }
-    }
   }
 }

@@ -35,5 +35,10 @@ pipeline {
 
       }
     }
+    stage('Trigger Deployment pipeline') {
+      steps{
+        build job: 'task1-seed2'
+      }
+    }
   }
 }
